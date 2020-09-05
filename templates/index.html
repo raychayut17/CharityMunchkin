@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block navbar %}
+<li class="active"><a href="/">Home</a></li>
+<!-- TODO -->
+<li><a href="/ad">Watch</a></li>
+<li><a href="/about">About</a></li>
+{% endblock %}
+
+{% block css %}
+<script src="https://js.stripe.com/v3/"></script>
+{% endblock %}
+
+
+<!-- Home-Area -->
+{% block home %}
+<header class="home-area overlay section-padding" id="home_page">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 hidden-sm col-md-5">
+                <figure class="mobile-image wow fadeInUp" data-wow-delay="0.2s">
+                    <img src="{{url_for('static', filename='images/play.png')}}" alt="">
+                </figure>
+            </div>
+            <div class="col-xs-12 col-md-7">
+                <div class="space-80 hidden-xs"></div>
+                <h1 class="wow fadeInUp" data-wow-delay="0.4s">Start giving with <strong>CharityMunchkin</strong>.</h1>
+                <div class="space-20"></div>
+                <div class="desc wow fadeInUp" data-wow-delay="0.6s">
+                    <p>It's simple. You watch ads and we use the money to donate to charity. 100%. We won't take a single cent.</p>
+                </div>
+                <div class="space-20"></div>
+                <a href="/ad" class="bttn-white wow fadeInUp" data-wow-delay="0.8s"><i class="lnr"></i>Watch Now</a>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+<!-- Home-Area-End -->
+{% block body %}
+<!--Price-Area -->
+<section class="section-padding price-area" id="price_page">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="page-title text-center">
+                    <h5 class="title">Got Money to spare?</h5>
+                    <h3 class="dark-color">Donate directly:</h3>
+                    <div class="space-60"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4">
+                <div class="price-box">
+                    <div class="price-header">
+                        <div class="price-icon">
+                            <span class="lnr lnr-rocket"></span>
+                        </div>
+                        <h4 class="upper">Donate $1</h4>
+                    </div>
+                    <div class="price-body">
+                        
+                    </div>
+                    <div class="price-rate">
+                        <sup>&#36;</sup> <span class="rate">1</span>
+                    </div>
+                    <div class="price-footer">
+                        <button id='checkout-button' class="bttn-white">Purchase</button>
+                    </div>
+                    <script type="text/javascript">
+                      // Create an instance of the Stripe object with your publishable API key
+                      var stripe = Stripe('pk_test_51HO2oqD7FF1qp64AaATivjyD0s8smu7Oo7D62RvQMVNMtaFgXcZoBJcqaZH7gkzPsL2YOd2ByJBcmAgjyNS29UpR007fzCZ8HE');
+                      var checkoutButton = document.getElementById('checkout-button');
+
+                      checkoutButton.addEventListener('click', function() {
+                        // Create a new Checkout Session using the server-side endpoint you
+                        // created in step 3.
+                        console.log("clicked");
+                        fetch('/create-checkout-session', {
+                          method: 'POST',
+                        })
+                        .then(function(response) {
+                          return response.json();
+                        })
+                        .then(function(session) {
+                          return stripe.redirectToCheckout({ sessionId: session.id });
+                        })
+                        .then(function(result) {
+                          // If `redirectToCheckout` fails due to a browser or network
+                          // error, you should display the localized error message to your
+                          // customer using `error.message`.
+                          if (result.error) {
+                            alert(result.error.message);
+                          }
+                        })
+                        .catch(function(error) {
+                          console.error('Error:', error);
+                        });
+                      });
+                    </script>
+                </div>
+                <div class="space-30 hidden visible-xs"></div>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <div class="price-box">
+                    <div class="price-header">
+                        <div class="price-icon">
+                            <span class="lnr lnr-diamond"></span>
+                        </div>
+                        <h4 class="upper">Donate $5</h4>
+                    </div>
+                    <div class="price-body">
+                        
+                    </div>
+                    <div class="price-rate">
+                        <sup>&#36;</sup> <span class="rate">5</span>
+                    </div>
+                    <div class="price-footer">
+                        <button id="checkout-button5" class="bttn-white">Purchase</button>
+                    </div>
+                    <script type="text/javascript">
+                      // Create an instance of the Stripe object with your publishable API key
+                      var stripe = Stripe('pk_test_51HO2oqD7FF1qp64AaATivjyD0s8smu7Oo7D62RvQMVNMtaFgXcZoBJcqaZH7gkzPsL2YOd2ByJBcmAgjyNS29UpR007fzCZ8HE');
+                      var checkoutButton = document.getElementById('checkout-button5');
+
+                      checkoutButton.addEventListener('click', function() {
+                        // Create a new Checkout Session using the server-side endpoint you
+                        // created in step 3.
+                        console.log("clicked");
+                        fetch('/create-checkout-session5', {
+                          method: 'POST',
+                        })
+                        .then(function(response) {
+                          return response.json();
+                        })
+                        .then(function(session) {
+                          return stripe.redirectToCheckout({ sessionId: session.id });
+                        })
+                        .then(function(result) {
+                          // If `redirectToCheckout` fails due to a browser or network
+                          // error, you should display the localized error message to your
+                          // customer using `error.message`.
+                          if (result.error) {
+                            alert(result.error.message);
+                          }
+                        })
+                        .catch(function(error) {
+                          console.error('Error:', error);
+                        });
+                      });
+                    </script>
+                </div>
+                <div class="space-30 hidden visible-xs"></div>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <div class="price-box">
+                    <div class="price-header">
+                        <div class="price-icon">
+                            <span class="lnr lnr-pie-chart"></span>
+                        </div>
+                        <h4 class="upper">Donate $10</h4>
+                    </div>
+                    <div class="price-body">
+                        
+                    </div>
+                    <div class="price-rate">
+                        <sup>&#36;</sup> <span class="rate">10</span>
+                    </div>
+                    <div class="price-footer">
+                        <button id="checkout-button10" class="bttn-white">Purchase</button>
+                    </div>
+                    <script type="text/javascript">
+                      // Create an instance of the Stripe object with your publishable API key
+                      var stripe = Stripe('pk_test_51HO2oqD7FF1qp64AaATivjyD0s8smu7Oo7D62RvQMVNMtaFgXcZoBJcqaZH7gkzPsL2YOd2ByJBcmAgjyNS29UpR007fzCZ8HE');
+                      var checkoutButton = document.getElementById('checkout-button10');
+
+                      checkoutButton.addEventListener('click', function() {
+                        // Create a new Checkout Session using the server-side endpoint you
+                        // created in step 3.
+                        console.log("clicked");
+                        fetch('/create-checkout-session10', {
+                          method: 'POST',
+                        })
+                        .then(function(response) {
+                          return response.json();
+                        })
+                        .then(function(session) {
+                          return stripe.redirectToCheckout({ sessionId: session.id });
+                        })
+                        .then(function(result) {
+                          // If `redirectToCheckout` fails due to a browser or network
+                          // error, you should display the localized error message to your
+                          // customer using `error.message`.
+                          if (result.error) {
+                            alert(result.error.message);
+                          }
+                        })
+                        .catch(function(error) {
+                          console.error('Error:', error);
+                        });
+                      });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Price-Area-End -->
+{% endblock %}
+<!-- Footer-Area -->
+{% block footer %}
+{% endblock %}
+<!-- Footer-Area-End -->
+

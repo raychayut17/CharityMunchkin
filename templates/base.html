@@ -1,0 +1,101 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Sumon Rahman">
+    <meta name="description" content="">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title -->
+    <title> {% block title %}{% endblock %}</title>
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="apple-touch-icon" href="{{url_for('static', filename='images/apple-touch-icon.png')}}">
+    <link rel="shortcut icon" type="image/ico" href="{{url_for('static', filename='images/favicon.ico')}}" />
+    <!-- Plugin-CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/linearicons.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/animate.css')}}">
+    <!-- Main-Stylesheets -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/responsive.css')}}">
+    {% block css %}
+    {% endblock %}
+    <script src="{{url_for('static', filename='js/vendor/modernizr-2.8.3.min.js')}}"></script>
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body data-spy="scroll" data-target=".mainmenu-area">
+    <!-- Preloader-content -->
+    <div class="preloader">
+        <span><i class="lnr lnr-sun"></i></span>
+    </div>
+    <!-- MainMenu-Area -->
+    <nav class="mainmenu-area" data-spy="affix" data-offset-top="200">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#primary_menu">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="{{url_for('static', filename='images/logo.png')}}" alt="Logo"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="primary_menu">
+                <ul class="nav navbar-nav mainmenu">
+                    {% block navbar %}
+                    {% endblock %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- MainMenu-Area-End -->
+    <!-- Home-Area -->
+    {% block home %}
+    {% endblock %}
+    <!-- Home-Area-End -->
+    {% block body %}
+    {% endblock %}
+    <!-- Footer-Area -->
+    <footer>
+        <!-- Footer-Bootom -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            <span>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="lnr lnr-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></span>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <div class="space-30 hidden visible-xs"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer-Bootom-End -->
+    </footer>
+    <!-- Footer-Area-End -->
+    <!--Vendor-JS-->
+    <script src="{{url_for('static', filename='js/vendor/jquery-1.12.4.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/vendor/jquery-ui.js')}}"></script>
+    <script src="{{url_for('static', filename='js/vendor/bootstrap.min.js')}}"></script>
+    <!--Plugin-JS-->
+    <script src="{{url_for('static', filename='js/owl.carousel.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/contact-form.js')}}"></script>
+    <script src="{{url_for('static', filename='js/ajaxchimp.js')}}"></script>
+    <script src="{{url_for('static', filename='js/scrollUp.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/magnific-popup.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/wow.min.js')}}"></script>
+    <!--Main-active-JS-->
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+    {% block js %}
+    {% endblock %}
+</body>
+
+</html>
